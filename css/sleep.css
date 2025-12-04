@@ -1,0 +1,496 @@
+/* Base Section Styling */
+.section {
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.3s ease;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.section h2 {
+    color: var(--primary-color, #6c5ce7);
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tabs */
+.tabs {
+
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 100px auto 25px;
+    flex-wrap: wrap;
+}
+
+.tabs button {
+    padding: 12px 25px;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.tabs button.active,
+.tabs button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Sleep Logger */
+#logTime {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.time-inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+}
+
+.time-input-container {
+    position: relative;
+}
+
+label {
+    display: block;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    padding-left: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.custom-time-display {
+    background: #f8f7ff;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.25s ease-out;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-time-display:hover {
+    background: #f0eeff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.custom-time-display:active {
+    transform: translateY(0);
+}
+
+.custom-time-display i {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    transition: transform 0.2s ease;
+}
+
+.custom-time-display:hover i {
+    transform: translateX(3px);
+}
+
+.time-picker-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-out;
+    backdrop-filter: blur(4px);
+}
+
+.time-picker-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.picker-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.time-picker-modal.active .picker-container {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Picker Header */
+.picker-header {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: #ffffff;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.picker-header h3 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.5px;
+}
+
+.picker-header p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.close-picker {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: rgba(255, 255, 255, 0.25);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.close-picker:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(90deg);
+}
+
+.picker-body {
+    padding: 1.8rem 1.2rem;
+}
+
+.picker-columns {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+    position: relative;
+}
+
+.picker-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 280px;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+.picker-column::-webkit-scrollbar {
+    display: none;
+}
+
+.picker-column::before,
+.picker-column::after {
+    content: '';
+    flex: 1 0 auto;
+    height: 108px;
+}
+
+.picker-item {
+    scroll-snap-align: center;
+    height: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #7e7e9c;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.picker-item.selected {
+    background: linear-gradient(135deg, #e0e7ff, #d0d9ff);
+    font-weight: 800;
+    color: var(--primary-color);
+    font-size: 2.4rem;
+    z-index: 2;
+    position: relative;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
+}
+
+.picker-item:hover:not(.selected) {
+    background: #f5f7ff;
+    color: var(--primary-color);
+}
+
+.picker-highlight {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    transform: translateY(-50%);
+    background: rgba(224, 231, 255, 0.4);
+    border-radius: 12px;
+    pointer-events: none;
+    border: 2px solid var(--primary-color);
+    z-index: 1;
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.15);
+}
+
+/* AM/PM Toggle */
+.ampm-toggle {
+    display: flex;
+    border-radius: 16px;
+    padding: 0.3rem;
+    margin: 0 auto 1.8rem;
+    width: fit-content;
+}
+
+.ampm-btn {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    padding: 0.85rem 2rem;
+    margin: 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: var(--primary-color);
+    border: none;
+    background: transparent;
+}
+
+.ampm-btn.active {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    color: var(--primary-color);
+    transform: scale(1.20);
+}
+
+/* Footer & Button */
+.picker-footer {
+    padding: 0 1.5rem 1.5rem;
+    text-align: center;
+}
+
+.set-time-btn {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: #ffffff;
+    border: none;
+    padding: 1.1rem 2.5rem;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease-out;
+    letter-spacing: 0.5px;
+}
+
+.set-time-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.45);
+}
+
+.set-time-btn:active {
+    transform: translateY(0);
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+}
+
+/* Animation for picker items */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.picker-item {
+    animation: fadeIn 0.35s ease-out forwards;
+}
+
+/* Save Button */
+#logTime button {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    border: none;
+    padding: 16px 45px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+#logTime button:hover {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Weekly Stats */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 35px 0;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 15px;
+    padding: 28px 20px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    opacity: 0.95;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.stat-description {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.graph-container {
+    background: var(--background-color);
+    border-radius: 18px;
+    padding: 25px;
+    margin: 35px 0;
+    height: 420px;
+    border: 1px solid #f0f0f0;
+}
+
+#weeklyPattern button {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 35px auto 0;
+}
+
+#weeklyPattern button:hover {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Suggestions */
+.suggestions {
+    background: var(--sidebar-bg);
+    border-radius: 18px;
+    padding: 28px;
+    margin-top: 35px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.suggestions h3 {
+    margin-bottom: 18px;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.suggestions ul {
+    padding-left: 22px;
+    text-align: left;
+    list-style-type: none;
+}
+
+.suggestions li {
+    margin-bottom: 14px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.suggestions li:before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}

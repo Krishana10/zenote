@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/journal.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+</head>
+
+<body id="fade-up">
+    <nav class="navbar">
+        <div class="logo">Mukome</div>
+        <input type="text" placeholder="search.." id="search-bar" aria-label="Search Pages">
+        <div id="search-results" class="search-results"></div>
+
+        <div class="nav-items">
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="theme-toggle">
+                <input type="checkbox" class="checkbox" id="checkbox">
+                <label for="checkbox" class="checkbox-label">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                    <span class="ball"></span>
+                </label>
+            </div>
+
+            <a href="setting.html" class="settings-icon">
+                <i class="fas fa-cog"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="journal.html"><i class="fas fa-book-open"></i> Journal</a></li>
+            <li><a href="sleep.html"><i class="fas fa-moon"></i> Sleep</a></li>
+            <li><a href="todolist.html"><i class="fas fa-list-check"></i> To Do List</a></li>
+            <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </aside>
+    <!-- Journal -->
+    <div class="tabs">
+        <button data-target="journal" class="active">Journal</button>
+        <button data-target="rant">Quick Rant</button>
+        <button data-target="calender">Calendar</button>
+    </div>
+    <section id="journal" class="section">
+
+        <div class="wrapper">
+            <div class="monthYear"></div>
+            <div class="dayDate"></div>
+            <div class="timestamp-box"></div>
+
+            <div class="moodTitle"></div>
+            <div class="mood-selectors"></div>
+            <textarea placeholder="Write your thoughts here..." rows="10" cols="60"></textarea>
+
+
+        </div>
+        <br />
+        <div class="button-group">
+            <button id="logEntryBtn" class="secondary-btn">Log Entry</button>
+
+            <button class="secondary-btn">View Calendar</button>
+        </div>
+
+        <aside class="mini-sidebar">
+            <input type="file" id="imageUploadInput" accept="image/*" hidden />
+            <ul>
+                <!-- Sidebar Button -->
+                <li>
+                    <button title="Upload Image" id="uploadImageBtn">
+                        <i class="fas fa-image"></i>
+                    </button>
+                </li>
+
+
+                <li>
+                    <button id="indent-btn" title="Align Text">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+                </li>
+                <li>
+                    <button title="Add Sticker" id="openStickerModalBtn">
+                        <i class="fas fa-sticky-note"></i>
+                    </button>
+                </li>
+
+
+                <li><button title="Timestamp"><i class="fas fa-clock"></i></button></li>
+            </ul>
+            <!-- Sticker Modal -->
+            <div id="stickerModal" class="sticker-modal hidden">
+                <div class="modal-content">
+                    <span class="close-sticker-modal">&times;</span>
+                    <h3>Select a Sticker</h3>
+                    <div class="sticker-grid">
+                        <!-- Add your stickers below -->
+                        <img src="../assets/icons/sticker.jpg" class="sticker-option" alt="Heart">
+                        <img src="../assets/stickers/star.png" class="sticker-option" alt="Star">
+                        <img src="../assets/stickers/smile.png" class="sticker-option" alt="Smile">
+                        <!-- Add more -->
+                    </div>
+        </aside>
+
+        </aside>
+    </section>
+
+    <section id="rant" class="section" style="display: none;">
+
+        <div class="wrapper">
+            <div class="monthYear"></div>
+            <div class="dayDate"></div>
+            <div class="timestamp-box"></div>
+
+            <div class="moodTitle"></div>
+            <div class="mood-selectors"></div>
+
+            <textarea placeholder="Rant here..." rows="10" cols="60"></textarea>
+            <div class="burn-effect">
+                <div class="flames"></div>
+                <div class="smoke"></div>
+            </div>
+            <div class="tear-effect"></div>
+            <div class="button-group">
+                <button id="burnBtn" class="secondary-btn">Burn Page</button>
+                <button id="tearBtn" class="secondary-btn">Tear Page</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FLEX WRAPPER -->
+    <section id="calender" class="section" style="display: none;">
+        <div class="calendar-wrapper">
+            <!-- Calendar Section -->
+            <div class="calendar-main">
+                <div class="calendar-header">
+                    <button id="prevMonthBtn">←</button>
+                    <div id="calendarMonthYear"></div>
+                    <button id="nextMonthBtn">→</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+
+            <!-- Analysis Section (SIDE-BY-SIDE) -->
+            <div class="calendar-analysis" id="calendarAnalysisContainer">
+                <button id="analyzeMoodBtn">Analyze Monthly Moods</button>
+                <div id="moodAnalysisResult" class="mood-summary hidden"></div>
+            </div>
+        </div>
+    </section>
+    <script src="../js/app.js"></script>
+    <script src="../js/journal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

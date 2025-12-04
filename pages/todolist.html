@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/todo.css" />
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">Mukome</div>
+        <input type="text" placeholder="search.." id="search-bar" aria-label="Search Pages">
+        <div id="search-results" class="search-results"></div>
+
+        <div class="nav-items">
+            <div id="theme-toggle">
+                <input type="checkbox" class="checkbox" id="checkbox">
+                <label for="checkbox" class="checkbox-label">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                    <span class="ball"></span>
+                </label>
+            </div>
+
+            <a href="setting.html" class="settings-icon">
+                <i class="fas fa-cog"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="journal.html"><i class="fas fa-book-open"></i> Journal</a></li>
+            <li><a href="sleep.html"><i class="fas fa-moon"></i> Sleep</a></li>
+            <li><a href="todolist.html"><i class="fas fa-list-check"></i> To Do List</a></li>
+            <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="task-header">
+            <div class="avatar-box">
+                <div class="level"></div>
+                <div class="progress-bars">
+                    <div class="progress-item hp">
+                        <div class="progress-label">Health</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-value">75%</div>
+                    </div>
+                    <div class="progress-item xp">
+                        <div class="progress-label">Level</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-value">45%</div>
+                    </div>
+                </div>
+            </div>
+            <button id="addTaskBtn"><i class="fas fa-plus"></i> Add New Quest</button>
+        </div>
+
+        <div class="task-grid">
+            <!-- Habits Section -->
+            <div class="task-section fade-in">
+                <h3><i class="fas fa-sync-alt"></i> Daily Habits</h3>
+                <div class="task-list" id="habitTasks">
+                    <!-- Habit tasks will be added here dynamically -->
+                    <div class="empty-state">
+                        <i class="fas fa-seedling"></i>
+                        <p>No habits yet. Start building good routines!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dailies Section -->
+            <div class="task-section fade-in">
+                <h3><i class="fas fa-calendar-day"></i> Daily Quests</h3>
+                <div class="task-list" id="dailyTasks">
+                    <!-- Daily tasks will be added here dynamically -->
+                    <div class="empty-state">
+                        <i class="fas fa-tasks"></i>
+                        <p>No daily tasks. Add your recurring quests!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- To-Do Section -->
+            <div class="task-section fade-in">
+                <h3><i class="fas fa-check-circle"></i> To-Do Quests</h3>
+                <div class="task-list" id="todoTasks">
+                    <!-- To-do tasks will be added here dynamically -->
+                    <div class="empty-state">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>No tasks yet. Add your first quest!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <h3>Create New Task</h3>
+            <div class="form-group">
+                <label for="taskTitle">Title</label>
+                <input type="text" id="taskTitle" class="form-control" placeholder="What needs to be done?">
+            </div>
+
+            <div class="form-group">
+                <label for="taskType">Type</label>
+                <select id="taskType" class="form-control">
+                    <option value="todo">To-Do Quest</option>
+                    <option value="daily">Daily Quest</option>
+                    <option value="habit">Habit</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="taskNotes">Description</label>
+                <textarea id="taskNotes" class="form-control" rows="3"
+                    placeholder="Add details about your quest..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="taskPriority">Priority</label>
+                <select id="taskPriority" class="form-control">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="deadlineGroup">
+                <label for="taskDeadline">Deadline</label>
+                <input type="date" id="taskDeadline" class="form-control">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-outline" id="cancelTaskBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveTaskBtn">Create Task</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/todo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

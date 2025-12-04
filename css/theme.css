@@ -1,0 +1,375 @@
+ /* ================================
+           🍑 Default Peach Theme
+           ================================ */
+ [data-theme="light"][data-color="default"] {
+     --background-color: #fff8ec;
+     --text-color: #333;
+     --primary-color: #ff7a59;
+     --secondary-color: #ffae70;
+     --accent-color: #ff9e70;
+     --navbar-bg: #ffd4b2;
+     --sidebar-bg: #ffe4c4;
+     --card-bg: #ffe4c4;
+     --text-light: rgba(51, 51, 51, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.15);
+     --border-color: rgba(255, 255, 255, 0.5);
+     /* Graph Colors */
+     --graph-color-1: #ff7a59;
+     --graph-color-2: #ffae70;
+     --graph-color-3: #ff9e70;
+     --graph-color-4: #ffb380;
+     --graph-color-5: #ffd4b2;
+     --graph-color-6: #ffc29c;
+     --graph-color-7: #ff9b6e;
+ }
+
+ [data-theme="dark"][data-color="default"] {
+     --background-color: #1f1a17;
+     --text-color: #f7dcd0;
+     --primary-color: #ffae70;
+     --secondary-color: #ff7a59;
+     --accent-color: #ff9e70;
+     --navbar-bg: #4d3427;
+     --sidebar-bg: #5a4032;
+     --card-bg: #3b2a1f;
+     --text-light: rgba(255, 228, 200, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.3);
+     --border-color: rgba(255, 255, 255, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #ffae70;
+     --graph-color-2: #ff7a59;
+     --graph-color-3: #ff9e70;
+     --graph-color-4: #ff8f5c;
+     --graph-color-5: #ffc08d;
+     --graph-color-6: #ffa97b;
+     --graph-color-7: #ff8d5a;
+ }
+
+ /* ================================
+           🔴 Red Theme
+           ================================ */
+ [data-theme="light"][data-color="red"] {
+     --background-color: #fff0f0;
+     --text-color: #330000;
+     --primary-color: #ff4d4d;
+     --secondary-color: #ff9999;
+     --accent-color: #ff6666;
+     --navbar-bg: #ffcccc;
+     --sidebar-bg: #ffe6e6;
+     --card-bg: #ffe6e6;
+     --text-light: rgba(51, 0, 0, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.15);
+     --border-color: rgba(255, 255, 255, 0.5);
+     /* Graph Colors */
+     --graph-color-1: #ff4d4d;
+     --graph-color-2: #ff9999;
+     --graph-color-3: #ff6666;
+     --graph-color-4: #ff8080;
+     --graph-color-5: #ffb3b3;
+     --graph-color-6: #ff7373;
+     --graph-color-7: #ff5c5c;
+ }
+
+ [data-theme="dark"][data-color="red"] {
+     --background-color: #1a0e0e;
+     --text-color: #ffe6e6;
+     --primary-color: #ff4d4d;
+     --secondary-color: #990000;
+     --accent-color: #660000;
+     --navbar-bg: #3b0a0a;
+     --sidebar-bg: #4d0000;
+     --card-bg: #330000;
+     --text-light: rgba(255, 230, 230, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.3);
+     --border-color: rgba(255, 255, 255, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #ff4d4d;
+     --graph-color-2: #990000;
+     --graph-color-3: #660000;
+     --graph-color-4: #b30000;
+     --graph-color-5: #ff1a1a;
+     --graph-color-6: #800000;
+     --graph-color-7: #cc0000;
+ }
+
+ /* ================================
+           🟣 Purple Theme
+           ================================ */
+ [data-theme="light"][data-color="purple"] {
+     --background-color: #f7f0ff;
+     --text-color: #2e003e;
+     --primary-color: #b388eb;
+     --secondary-color: #d8b4f8;
+     --accent-color: #c084fc;
+     --navbar-bg: #f0e0ff;
+     --sidebar-bg: #e9d5ff;
+     --card-bg: #f3e8ff;
+     --text-light: rgba(46, 0, 62, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.1);
+     --border-color: rgba(255, 255, 255, 0.5);
+     /* Graph Colors */
+     --graph-color-1: #b388eb;
+     --graph-color-2: #d8b4f8;
+     --graph-color-3: #c084fc;
+     --graph-color-4: #a56de0;
+     --graph-color-5: #e0c0ff;
+     --graph-color-6: #cda8f5;
+     --graph-color-7: #9a6bcf;
+ }
+
+ [data-theme="dark"][data-color="purple"] {
+     --background-color: #1d1329;
+     --text-color: #f3e8ff;
+     --primary-color: #d8b4f8;
+     --secondary-color: #b388eb;
+     --accent-color: #c084fc;
+     --navbar-bg: #2f1e45;
+     --sidebar-bg: #3b2757;
+     --card-bg: #2a1d3a;
+     --text-light: rgba(255, 240, 255, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.3);
+     --border-color: rgba(255, 255, 255, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #d8b4f8;
+     --graph-color-2: #b388eb;
+     --graph-color-3: #c084fc;
+     --graph-color-4: #9c5fdb;
+     --graph-color-5: #e6c8ff;
+     --graph-color-6: #cda0f0;
+     --graph-color-7: #a36ee0;
+ }
+
+ /* ================================
+           🔵 Blue Theme
+           ================================ */
+ [data-theme="light"][data-color="blue"] {
+     --background-color: #edf6ff;
+     --text-color: #003366;
+     --primary-color: #6cb4ee;
+     --secondary-color: #a3d8ff;
+     --accent-color: #90cdf4;
+     --navbar-bg: #d4ecff;
+     --sidebar-bg: #e6f2ff;
+     --card-bg: #f0faff;
+     --text-light: rgba(0, 51, 102, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.1);
+     --border-color: rgba(255, 255, 255, 0.5);
+     /* Graph Colors */
+     --graph-color-1: #6cb4ee;
+     --graph-color-2: #a3d8ff;
+     --graph-color-3: #90cdf4;
+     --graph-color-4: #4da6ff;
+     --graph-color-5: #c2e4ff;
+     --graph-color-6: #7fc3f5;
+     --graph-color-7: #5aacef;
+ }
+
+ [data-theme="dark"][data-color="blue"] {
+     --background-color: #0e1a26;
+     --text-color: #e0f2ff;
+     --primary-color: #6cb4ee;
+     --secondary-color: #378fe6;
+     --accent-color: #90cdf4;
+     --navbar-bg: #1c2e40;
+     --sidebar-bg: #22384d;
+     --card-bg: #1a2638;
+     --text-light: rgba(224, 242, 255, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.3);
+     --border-color: rgba(255, 255, 255, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #6cb4ee;
+     --graph-color-2: #378fe6;
+     --graph-color-3: #90cdf4;
+     --graph-color-4: #2a7bc8;
+     --graph-color-5: #a0d1ff;
+     --graph-color-6: #4f9be0;
+     --graph-color-7: #3d8bd6;
+ }
+
+ /* ================================
+           🟢 Green Theme
+           ================================ */
+ [data-theme="light"][data-color="green"] {
+     --background-color: #f3fff5;
+     --text-color: #1b3d2f;
+     --primary-color: #7ed6a5;
+     --secondary-color: #a8e6cf;
+     --accent-color: #98fb98;
+     --navbar-bg: #d5f5e3;
+     --sidebar-bg: #e0f7ea;
+     --card-bg: #eafff0;
+     --text-light: rgba(27, 61, 47, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.1);
+     --border-color: rgba(255, 255, 255, 0.5);
+     /* Graph Colors */
+     --graph-color-1: #7ed6a5;
+     --graph-color-2: #a8e6cf;
+     --graph-color-3: #98fb98;
+     --graph-color-4: #5ec991;
+     --graph-color-5: #c8f0d5;
+     --graph-color-6: #8de0b0;
+     --graph-color-7: #6bd09d;
+ }
+
+ [data-theme="dark"][data-color="green"] {
+     --background-color: #0d1f14;
+     --text-color: #d8fdd9;
+     --primary-color: #7ed6a5;
+     --secondary-color: #55c57a;
+     --accent-color: #98fb98;
+     --navbar-bg: #143c26;
+     --sidebar-bg: #1c5033;
+     --card-bg: #173c29;
+     --text-light: rgba(216, 253, 217, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.3);
+     --border-color: rgba(255, 255, 255, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #7ed6a5;
+     --graph-color-2: #55c57a;
+     --graph-color-3: #98fb98;
+     --graph-color-4: #43b36d;
+     --graph-color-5: #a0e8bd;
+     --graph-color-6: #68c992;
+     --graph-color-7: #4ebd7e;
+ }
+
+ /* ================================
+           🟡 Yellow Theme
+           ================================ */
+ [data-theme="light"][data-color="yellow"] {
+     --background-color: #fffef0;
+     --text-color: #4b3f00;
+     --primary-color: #f9d976;
+     --secondary-color: #fff6a3;
+     --accent-color: #ffe066;
+     --navbar-bg: #fff8c6;
+     --sidebar-bg: #fffde7;
+     --card-bg: #fff9cc;
+     --text-light: rgba(75, 63, 0, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.1);
+     --border-color: rgba(255, 255, 255, 0.5);
+     /* Graph Colors */
+     --graph-color-1: #f9d976;
+     --graph-color-2: #fff6a3;
+     --graph-color-3: #ffe066;
+     --graph-color-4: #f9ca24;
+     --graph-color-5: #ffefb3;
+     --graph-color-6: #ffe880;
+     --graph-color-7: #f9d24d;
+ }
+
+ [data-theme="dark"][data-color="yellow"] {
+     --background-color: #1f1d0f;
+     --text-color: #fffce5;
+     --primary-color: #ffe066;
+     --secondary-color: #d4af37;
+     --accent-color: #f9d976;
+     --navbar-bg: #3d3812;
+     --sidebar-bg: #4a4215;
+     --card-bg: #2e2b0f;
+     --text-light: rgba(255, 252, 229, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.3);
+     --border-color: rgba(255, 255, 255, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #ffe066;
+     --graph-color-2: #d4af37;
+     --graph-color-3: #f9d976;
+     --graph-color-4: #e6b800;
+     --graph-color-5: #fff0a3;
+     --graph-color-6: #e6c34d;
+     --graph-color-7: #f9ca24;
+ }
+
+ /* ================================
+           💖 Pink Theme
+           ================================ */
+ [data-theme="light"][data-color="pink"] {
+     --background-color: #fff0f5;
+     --text-color: #4d0036;
+     --primary-color: #ff91af;
+     --secondary-color: #ffb6c1;
+     --accent-color: #f48fb1;
+     --navbar-bg: #ffd6e8;
+     --sidebar-bg: #ffe4ec;
+     --card-bg: #fff0f8;
+     --text-light: rgba(77, 0, 54, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.1);
+     --border-color: rgba(255, 255, 255, 0.5);
+     /* Graph Colors */
+     --graph-color-1: #ff91af;
+     --graph-color-2: #ffb6c1;
+     --graph-color-3: #f48fb1;
+     --graph-color-4: #ff7aa2;
+     --graph-color-5: #ffd1dc;
+     --graph-color-6: #ffa5c0;
+     --graph-color-7: #ff80ab;
+ }
+
+ [data-theme="dark"][data-color="pink"] {
+     --background-color: #2c1a25;
+     --text-color: #ffe9f0;
+     --primary-color: #ff91af;
+     --secondary-color: #c71585;
+     --accent-color: #f48fb1;
+     --navbar-bg: #3a1f2c;
+     --sidebar-bg: #4a2c3a;
+     --card-bg: #331a26;
+     --text-light: rgba(255, 233, 240, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.3);
+     --border-color: rgba(255, 255, 255, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #ff91af;
+     --graph-color-2: #c71585;
+     --graph-color-3: #f48fb1;
+     --graph-color-4: #e75480;
+     --graph-color-5: #ffc0cb;
+     --graph-color-6: #f8a3ba;
+     --graph-color-7: #ff6b94;
+ }
+
+ /* ================================
+           ⚪ Pure White Theme
+           ================================ */
+ [data-theme="light"][data-color="white"] {
+     --background-color: #ffffff;
+     --text-color: #222;
+     --primary-color: #666;
+     --secondary-color: #aaa;
+     --accent-color: #ccc;
+     --navbar-bg: #f0f0f0;
+     --sidebar-bg: #f8f8f8;
+     --card-bg: #ffffff;
+     --text-light: rgba(34, 34, 34, 0.6);
+     --shadow-color: rgba(0, 0, 0, 0.08);
+     --border-color: rgba(0, 0, 0, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #666;
+     --graph-color-2: #aaa;
+     --graph-color-3: #ccc;
+     --graph-color-4: #888;
+     --graph-color-5: #e0e0e0;
+     --graph-color-6: #999;
+     --graph-color-7: #777;
+ }
+
+ [data-theme="dark"][data-color="white"] {
+     --background-color: #1a1a1a;
+     --text-color: #f1f1f1;
+     --primary-color: #ccc;
+     --secondary-color: #999;
+     --accent-color: #aaa;
+     --navbar-bg: #2c2c2c;
+     --sidebar-bg: #333;
+     --card-bg: #222;
+     --text-light: rgba(241, 241, 241, 0.7);
+     --shadow-color: rgba(0, 0, 0, 0.25);
+     --border-color: rgba(255, 255, 255, 0.1);
+     /* Graph Colors */
+     --graph-color-1: #ccc;
+     --graph-color-2: #999;
+     --graph-color-3: #aaa;
+     --graph-color-4: #ddd;
+     --graph-color-5: #f0f0f0;
+     --graph-color-6: #b3b3b3;
+     --graph-color-7: #e0e0e0;
+ }

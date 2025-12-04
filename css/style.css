@@ -1,0 +1,642 @@
+/* === STRUCTURAL VARIABLES === */
+:root {
+    /* Sizes */
+    --border-radius: 20px;
+    --nav-height: clamp(60px, 8vh, 70px);
+    --sidebar-width: clamp(160px, 15vw, 180px);
+    --transition-speed: 0.3s;
+    --hover-brightness: 1.05;
+}
+
+/* === BASE STYLES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition:
+        background-color var(--transition-speed),
+        color var(--transition-speed);
+}
+
+body {
+    font-family: 'Patrick Hand', cursive;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1,
+h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* === NAVBAR STYLES === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-height);
+    padding: 0 clamp(15px, 3vw, 30px);
+    background: var(--navbar-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: all var(--transition-speed) ease;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 5px 5px 0 0;
+}
+
+/* Search Bar */
+#search-bar {
+    width: clamp(200px, 25vw, 300px);
+    height: clamp(36px, 5vh, 40px);
+    padding: 0 clamp(15px, 2vw, 20px);
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    font-family: 'Patrick Hand', cursive;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    transition: all var(--transition-speed) ease;
+    outline: none;
+    position: relative;
+}
+
+#search-bar::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+#search-bar:focus {
+    width: clamp(220px, 28vw, 350px);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Theme Toggle */
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-label {
+    background: var(--color-sidebar);
+    width: clamp(45px, 6vw, 50px);
+    height: clamp(24px, 3.5vw, 26px);
+    margin-bottom: 13px;
+    border-radius: 5px;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 6px var(--shadow-color);
+    transition: all var(--transition-speed) ease;
+    margin-top: clamp(10px, 2vh, 15px);
+}
+
+.fa-moon,
+.fa-sun {
+    color: var(--color-text);
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    z-index: 2;
+}
+
+.checkbox-label .ball {
+    background-color: white;
+    width: clamp(20px, 3vw, 22px);
+    height: clamp(20px, 3vw, 22px);
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    transition: transform var(--transition-speed) ease;
+    z-index: 3;
+}
+
+.checkbox:checked+.checkbox-label .ball {
+    transform: translateX(clamp(21px, 3vw, 24px));
+}
+
+/* Settings Icon */
+.settings-icon {
+    width: clamp(36px, 5vw, 40px);
+    height: clamp(36px, 5vw, 40px);
+    border-radius: 50%;
+    background: var(--card-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: clamp(10px, 2vw, 15px);
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    color: var(--color-text);
+}
+
+.settings-icon:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    box-shadow: 0 6px 15px var(--shadow-color);
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 2vw, 15px);
+}
+
+/* === SIDEBAR STYLES === */
+.sidebar {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--nav-height));
+    background: var(--sidebar-bg);
+    padding: clamp(15px, 3vw, 20px) 0;
+    z-index: 90;
+    transition: transform var(--transition-speed) ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: clamp(8px, 1.5vw, 10px) 0;
+    padding: 0 5px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: clamp(12px, 2vw, 15px) clamp(15px, 2.5vw, 20px);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    transform: translateX(-10px);
+    transition: transform var(--transition-speed) ease;
+}
+
+.sidebar a:hover {
+    background: rgba(139, 199, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.sidebar a:hover::before {
+    transform: translateX(0);
+}
+
+.sidebar i {
+    width: clamp(25px, 4vw, 30px);
+    font-size: clamp(1.1rem, 2vw, 1.2rem);
+    margin-right: clamp(10px, 2vw, 15px);
+    color: var(--primary-color);
+}
+
+/* === HOME PAGE STYLES === */
+#home {
+    min-height: 100vh;
+    padding: clamp(20px, 5vw, 40px);
+    padding-top: calc(var(--nav-height) + clamp(20px, 5vh, 40px));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background: var(--color-bg);
+}
+
+#home h1 {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    margin-bottom: clamp(15px, 3vw, 20px);
+    line-height: 1.2;
+    max-width: clamp(90%, 600px, 95%);
+    color: var(--color-text);
+}
+
+#home h2 {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 400;
+    margin-bottom: clamp(20px, 4vw, 30px);
+    color: var(--text-light);
+    max-width: clamp(90%, 600px, 95%);
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(15px, 3vw, 20px);
+    margin-bottom: clamp(20px, 4vw, 30px);
+    flex-wrap: wrap;
+}
+
+.gotoJournal,
+.gotoTasks {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    padding: clamp(12px, 2vw, 15px) clamp(25px, 4vw, 30px);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    z-index: 1;
+    width: clamp(200px, 40vw, 220px);
+    text-align: center;
+}
+
+.gotoJournal {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    border: none;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.gotoTasks {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: none;
+}
+
+.gotoJournal:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.gotoTasks:hover {
+    background: linear-gradient(270deg, var(--secondary-color), var(--primary-color));
+    color: white;
+}
+
+/* Quote Box */
+#quoteBox {
+    background: var(--card-bg);
+    padding: clamp(15px, 3vw, 25px);
+    border-radius: var(--border-radius);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-style: italic;
+    max-width: clamp(90%, 600px, 95%);
+    margin-top: clamp(15px, 3vw, 20px);
+    position: relative;
+    border-left: 5px solid var(--accent-color);
+}
+
+/* Search Results */
+.search-results {
+    position: absolute;
+    background: var(--card-bg, white);
+    border: 1px solid var(--text-light);
+    border-radius: 12px;
+    max-width: clamp(250px, 80vw, 350px);
+    width: 90%;
+    top: calc(var(--nav-height) + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-height: 300px;
+    overflow-y: auto;
+    padding: clamp(10px, 2vw, 15px);
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--card-bg);
+}
+
+.search-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-results::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 12px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 12px;
+}
+
+.search-result-item {
+    padding: clamp(8px, 1.5vw, 12px) clamp(12px, 2vw, 15px);
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: var(--text-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-result-item:hover,
+.search-result-item:focus {
+    background: linear-gradient(90deg, rgba(139, 199, 255, 0.1), rgba(139, 199, 255, 0.2));
+    transform: translateX(5px);
+    outline: none;
+}
+
+.search-result-item:active {
+    background: rgba(139, 199, 255, 0.3);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
+    color: var(--text-color);
+}
+
+/* === RESPONSIVE STYLES === */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: clamp(140px, 14vw, 160px);
+    }
+
+    .navbar {
+        padding: 0 clamp(10px, 2vw, 20px);
+    }
+
+    #search-bar {
+        width: clamp(180px, 22vw, 250px);
+    }
+
+    #search-bar:focus {
+        width: clamp(200px, 25vw, 280px);
+    }
+
+    .sidebar a {
+        padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 15px);
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+
+    .sidebar i {
+        font-size: clamp(1rem, 1.8vw, 1.1rem);
+        margin-right: clamp(8px, 1.5vw, 10px);
+    }
+
+    #home {
+        padding: clamp(15px, 4vw, 30px);
+    }
+
+    #home h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    #home h2 {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+    }
+
+    .gotoJournal,
+    .gotoTasks {
+        width: clamp(180px, 35vw, 200px);
+        padding: clamp(10px, 1.5vw, 13px) clamp(20px, 3vw, 25px);
+    }
+
+    #quoteBox {
+        padding: clamp(12px, 2.5vw, 20px);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .search-results {
+        max-width: clamp(220px, 75vw, 300px);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --border-radius: 16px;
+        --nav-height: clamp(50px, 7vh, 60px);
+        --sidebar-width: 0;
+    }
+
+    .navbar {
+        padding: 0 clamp(8px, 1.5vw, 15px);
+    }
+
+    #search-bar {
+        width: clamp(140px, 40vw, 160px);
+        height: clamp(32px, 4.5vh, 36px);
+        padding: 0 clamp(10px, 1.5vw, 15px);
+    }
+
+    #search-bar:focus {
+        width: clamp(160px, 45vw, 200px);
+    }
+
+    .settings-icon {
+        width: clamp(32px, 4.5vw, 36px);
+        height: clamp(32px, 4.5vw, 36px);
+        margin-left: clamp(8px, 1.5vw, 10px);
+    }
+
+    .checkbox-label {
+        width: clamp(40px, 5.5vw, 45px);
+        height: clamp(22px, 3vw, 24px);
+        margin-top: clamp(8px, 1.5vh, 12px);
+    }
+
+    .checkbox-label .ball {
+        width: clamp(18px, 2.5vw, 20px);
+        height: clamp(18px, 2.5vw, 20px);
+    }
+
+    .checkbox:checked+.checkbox-label .ball {
+        transform: translateX(clamp(18px, 2.5vw, 21px));
+    }
+
+    .sidebar {
+        width: clamp(200px, 60vw, 250px);
+        transform: translateX(-100%);
+        box-shadow: 3px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .hamburger {
+        display: block;
+        margin-left: clamp(10px, 2vw, 15px);
+    }
+
+    .sidebar a:hover {
+        transform: none;
+    }
+
+    #home {
+        padding: clamp(15px, 3vw, 20px);
+        padding-top: calc(var(--nav-height) + clamp(15px, 3vh, 20px));
+    }
+
+    #home h1 {
+        font-size: clamp(1.8rem, 4.5vw, 2.2rem);
+    }
+
+    #home h2 {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: clamp(10px, 2vw, 15px);
+    }
+
+    .gotoJournal,
+    .gotoTasks {
+        width: clamp(90%, 280px, 100%);
+    }
+
+    #quoteBox {
+        padding: clamp(10px, 2vw, 15px);
+        font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    }
+
+    .search-results {
+        max-width: clamp(90%, 250px, 95%);
+        top: calc(var(--nav-height) + 8px);
+        max-height: 250px;
+    }
+
+    .search-result-item {
+        padding: clamp(6px, 1vw, 10px) clamp(10px, 1.5vw, 12px);
+        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 clamp(5px, 1vw, 10px);
+    }
+
+    #search-bar {
+        width: clamp(120px, 35vw, 140px);
+        height: clamp(30px, 4vh, 32px);
+    }
+
+    #search-bar:focus {
+        width: clamp(140px, 40vw, 160px);
+    }
+
+    .settings-icon {
+        width: clamp(30px, 4vw, 32px);
+        height: clamp(30px, 4vw, 32px);
+    }
+
+    .hamburger {
+        font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+    }
+
+    .sidebar {
+        width: clamp(180px, 80vw, 220px);
+    }
+
+    #home {
+        padding: clamp(10px, 2vw, 15px);
+    }
+
+    #home h1 {
+        font-size: clamp(1.6rem, 4vw, 1.8rem);
+    }
+
+    #home h2 {
+        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    }
+
+    .gotoJournal,
+    .gotoTasks {
+        padding: clamp(10px, 1.5vw, 12px) clamp(15px, 2.5vw, 20px);
+    }
+
+    .search-results {
+        max-width: clamp(85%, 220px, 90%);
+        padding: clamp(8px, 1.5vw, 10px);
+    }
+}
+
+/* === UTILITY CLASSES FOR RESPONSIVENESS === */
+@media (max-width: 768px) {
+    .mobile-hidden {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .desktop-only {
+        display: block !important;
+    }
+}
+
+/* Search Results */
+.search-results {
+    position: absolute;
+    background: var(--card-bg, white);
+    border: 1px solid var(--text-light);
+    border-radius: 12px;
+    max-width: clamp(250px, 80vw, 350px);
+    width: 90%;
+    top: calc(var(--nav-height) + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-height: 300px;
+    overflow-y: auto;
+    padding: clamp(10px, 2vw, 15px);
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--card-bg);
+    display: none;
+    /* Hide by default */
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease, display var(--transition-speed) ease;
+}
+
+.search-results.active {
+    display: block;
+    /* Show when active */
+    opacity: 1;
+}
+
+.hidden-body > *:not(#site-loader) {
+    visibility: hidden !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}

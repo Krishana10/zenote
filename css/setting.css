@@ -1,0 +1,67 @@
+/* Settings Section Container */
+#settings.section {
+    padding: clamp(16px, 4vw, 32px);
+    padding-top: calc(var(--nav-height) + clamp(16px, 4vh, 32px));
+    padding-left: var(--sidebar-width);
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Section Title Styling */
+#settings label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color, #6c5ce7);
+    margin-bottom: 10px;
+}
+
+/* Theme Dropdown */
+#color-select {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 2px solid var(--primary-color, #6c5ce7);
+    border-radius: 8px;
+    background-color: var(--input-bg, #fff);
+    color: var(--text-color, #333);
+    margin-bottom: 30px;
+    transition: border-color 0.3s ease;
+}
+
+#color-select:focus {
+    border-color: var(--secondary-color, #ffae70);
+    outline: none;
+}
+
+/* Link Back Home */
+#settings a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color, #6c5ce7);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+#settings a:hover {
+    background-color: var(--primary-dark, #5a4bcf);
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+    #settings.section {
+        margin-left: 0;
+        margin-top: 120px;
+        width: 90%;
+    }
+}

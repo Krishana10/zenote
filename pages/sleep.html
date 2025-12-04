@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/sleep.css" />
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body id="fade-up">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">Mukome</div>
+        <input type="text" placeholder="search.." id="search-bar" aria-label="Search Pages">
+        <div id="search-results" class="search-results"></div>
+
+        <div class="nav-items">
+            <div id="theme-toggle">
+                <input type="checkbox" class="checkbox" id="checkbox">
+                <label for="checkbox" class="checkbox-label">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                    <span class="ball"></span>
+                </label>
+            </div>
+
+            <a href="setting.html" class="settings-icon">
+                <i class="fas fa-cog"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="journal.html"><i class="fas fa-book-open"></i> Journal</a></li>
+            <li><a href="sleep.html"><i class="fas fa-moon"></i> Sleep</a></li>
+            <li><a href="todolist.html"><i class="fas fa-list-check"></i> To Do List</a></li>
+            <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </aside>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button data-target="logTime" class="active">Sleep Logger</button>
+        <button data-target="weeklyStats">Weekly Stats</button>
+        <button data-target="weeklyPattern">Pattern</button>
+    </div>
+
+    <!-- Sleep Logger Section -->
+    <section id="logTime" class="section">
+        <h2>Sleep Tracker</h2>
+        <p>Track your sleep hours and get improvement tips.</p>
+
+        <div class="time-inputs-wrapper">
+            <div class="time-input-container">
+                <label for="sleepTime">Sleep From</label>
+                <div class="custom-time-display" id="sleepTimeDisplay">
+                    <span>10:00 PM</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <input type="hidden" id="sleepTime" value="22:00" />
+            </div>
+
+            <div class="time-input-container">
+                <label for="wakeTime">Wake At</label>
+                <div class="custom-time-display" id="wakeTimeDisplay">
+                    <span>06:30 AM</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <input type="hidden" id="wakeTime" value="06:30" />
+            </div>
+        </div>
+
+        <button id="saveSleep">Save Sleep Data</button>
+
+        <!-- Time Picker Modal -->
+        <div class="time-picker-modal" id="timePicker">
+            <div class="picker-container">
+                <div class="picker-header">
+                    <div class="close-picker" id="closePicker">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <h3 id="pickerTitle">Set Sleep Time</h3>
+                    <p>Scroll to select hours and minutes</p>
+                </div>
+
+                <div class="picker-body">
+                    <div class="picker-columns">
+                        <div class="picker-column" id="hoursColumn">
+                            <div class="picker-highlight"></div>
+                            <!-- JS will populate hours -->
+                        </div>
+                        <div class="picker-column" id="minutesColumn">
+                            <div class="picker-highlight"></div>
+                            <!-- JS will populate minutes -->
+                        </div>
+                    </div>
+
+                    <div class="ampm-toggle">
+                        <button class="ampm-btn" id="amBtn">AM</button>
+                        <button class="ampm-btn active" id="pmBtn">PM</button>
+                    </div>
+                </div>
+
+                <div class="picker-footer">
+                    <button class="set-time-btn" id="setTimeBtn">Set Time</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Stats Section -->
+    <section id="weeklyStats" class="section">
+        <h2>Weekly Sleep Statistics</h2>
+        <p>Your sleep performance overview for the past 7 days</p>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Avg Sleep Duration</h3>
+                <div id="avgSleepValue" class="stat-value">0h</div>
+                <div class="stat-description">Per night</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Nights Tracked</h3>
+                <div id="nightsTrackedValue" class="stat-value">0</div>
+                <div class="stat-description">Out of 7 days</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Recommended Sleep</h3>
+                <div class="stat-value">7-9h</div>
+                <div class="stat-description">For your age group</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Sleep Consistency</h3>
+                <div class="stat-value">0%</div>
+                <div class="stat-description">Based on your patterns</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Pattern Section -->
+    <section id="weeklyPattern" class="section">
+        <h2>Weekly Sleep Pattern</h2>
+        <p>Visualize your sleep patterns and discover insights for improvement</p>
+
+        <div class="graph-container">
+            <canvas id="sleepChart"></canvas>
+        </div>
+
+        <button id="getSuggestions">Get Sleep Improvement Suggestions</button>
+
+        <div class="suggestions" id="suggestionsContainer">
+            <h3>Sleep Improvement Tips</h3>
+            <p>Click the button above to get personalized suggestions based on your sleep patterns.</p>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/sleep.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
